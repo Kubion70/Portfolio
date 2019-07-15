@@ -1,0 +1,57 @@
+.about-me-background {
+    background-color: dimgray;
+    color: #f8f8ff;
+    padding-bottom: 1.5rem;
+}
+
+.about-me-heading {
+    margin-top: 0;
+    padding-top: 2rem;
+    font-family: Roboto;
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.about-me-description {
+    font-family: Roboto;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.quote > .author {
+    font-style: normal;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.quote > .author > span {
+    font-style: normal;
+    font-weight: normal;
+}
+
+.quote > .link-group {
+    position: relative;
+    float: right;
+    bottom: 6px;
+}
+
+.quote > .link-group > button {
+    margin-left: 0.75rem;
+}
+
+.fab {
+    font-size: 1.5rem;
+}
+
+.tech-section * {
+    font-family: Roboto;
+}
+
+.opinions-header {
+    font-family: Roboto;
+}

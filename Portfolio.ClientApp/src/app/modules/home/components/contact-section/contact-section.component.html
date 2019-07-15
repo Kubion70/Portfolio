@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="contact-heading">Contact</h1>
+    <div class="row center-xs">
+        <div class="col-md-8 col-xs-12">
+            <p class="contact-heading-description">{{description}}</p>
+        </div>
+    </div>
+    <div class="row center-xs">
+        <div class="col-md-4 col-xs-12">
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <mat-icon>mail</mat-icon>
+                </div>
+            </div>
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <p class="contact-type-text">
+                        <a [href]="'mailto:' + contact.mail" class="contact-mail">{{contact.mail}}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <mat-icon>phone</mat-icon>
+                </div>
+            </div>
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <p class="contact-type-text">
+                        <a [href]="'tel:' + contact.phone" class="contact-phone">{{contact.phone}}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <app-contact-form></app-contact-form>
+        </div>
+    </div>
+</div>

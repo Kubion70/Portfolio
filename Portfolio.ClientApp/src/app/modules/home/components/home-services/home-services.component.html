@@ -1,0 +1,20 @@
+<div class="container services-container">
+    <h1 class="services-heading">My offer</h1>
+    <div class="row">
+        <div class="col-xs-12 col-md-4" *ngFor="let service of services">
+            <mat-card class="row center-xs service-paper">
+                <div class="col-xs-12">
+                    <mat-icon>{{service.Icon}}</mat-icon>
+                </div>
+                <div class="col-xs-12">
+                    <h2 class="service-title">{{service.Title}}</h2>
+                </div>
+                <div class="col-xs-12">
+                    <p class="service-description">
+                        {{service.Description}}
+                    </p>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

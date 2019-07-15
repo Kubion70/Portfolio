@@ -1,0 +1,28 @@
+.contact-heading {
+    font-family: Roboto;
+    text-align:center;
+    font-size: 3.5rem;
+    font-weight: lighter;
+}
+
+.contact-heading-description {
+    font-family: Roboto;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.contact-type-text {
+    font-family: Roboto;
+    text-align: center;
+    font-size: 1.25rem;
+    width: 100%;
+}
+
+.contact-phone, .contact-mail {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
