@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.BusinessLogic", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portfolio.Tests", "Portfolio.Tests", "{1F24A745-EB87-4B40-AFD1-4DF757C2900B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Tests.Unit", "Portfolio.Tests\Portfolio.Tests.Unit\Portfolio.Tests.Unit.csproj", "{AC16DB69-0144-4246-9AC5-453B2FE51882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Tests.Unit", "Portfolio.Tests\Portfolio.Tests.Unit\Portfolio.Tests.Unit.csproj", "{AC16DB69-0144-4246-9AC5-453B2FE51882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Tests.Integration", "Portfolio.Tests\Portfolio.Tests.Integration\Portfolio.Tests.Integration.csproj", "{811C5929-3197-4F87-803E-099858E4B204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Tests.Integration", "Portfolio.Tests\Portfolio.Tests.Integration\Portfolio.Tests.Integration.csproj", "{811C5929-3197-4F87-803E-099858E4B204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Tests.Common", "Portfolio.Tests\Portfolio.Tests.Common\Portfolio.Tests.Common.csproj", "{80B603EE-63AE-4D06-B7C0-4CB86B7E6419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Tests.Common", "Portfolio.Tests\Portfolio.Tests.Common\Portfolio.Tests.Common.csproj", "{80B603EE-63AE-4D06-B7C0-4CB86B7E6419}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Resources", "Portfolio.Resources\Portfolio.Resources.csproj", "{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,18 @@ Global
 		{80B603EE-63AE-4D06-B7C0-4CB86B7E6419}.Release|x64.Build.0 = Release|Any CPU
 		{80B603EE-63AE-4D06-B7C0-4CB86B7E6419}.Release|x86.ActiveCfg = Release|Any CPU
 		{80B603EE-63AE-4D06-B7C0-4CB86B7E6419}.Release|x86.Build.0 = Release|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Debug|x64.Build.0 = Debug|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Debug|x86.Build.0 = Debug|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Release|x64.ActiveCfg = Release|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Release|x64.Build.0 = Release|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Release|x86.ActiveCfg = Release|Any CPU
+		{957F5313-7A1D-4BC7-AFB9-6E70749ABEBE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
