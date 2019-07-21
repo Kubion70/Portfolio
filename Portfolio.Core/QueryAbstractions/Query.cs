@@ -2,26 +2,26 @@
 using System.Data;
 using System.Threading.Tasks;
 
-namespace Portfolio.Core.LogicAbstractions
+namespace Portfolio.Core.QueryAbstractions
 {
-    public abstract class Logic<Incomer, Result> : ILogic<Result>
-        where Incomer : ILogicIncomer<Result>
-        where Result : ILogicResult
+    public abstract class Query<Incomer, Result> : IQuery<Result> where Incomer : IQueryIncomer<Result>
     {
         public IDbConnection DbConnection { get; set; }
 
         public IValidator<Incomer> Validator { get; set; }
 
-        public async Task<LogicExecution<Result>> ExecuteAsync(ILogicIncomer<Result> incomer)
+        public async Task<QueryExecution<Result>> ExecuteAsync(IQueryIncomer<Result> incomer)
         {
             if (Validator != null)
             {
                 var result = Validator.Validate(incomer);
                 if (!result.IsValid)
-                    return new LogicExecution<Result>(result.Errors);
+                {
+                    return new QueryExecution<Result>(result.Errors);
+                }
             }
 
-            return new LogicExecution<Result>(await Execute((Incomer)incomer));
+            return new QueryExecution<Result>(await Execute((Incomer)incomer));
         }
 
         protected abstract Task<Result> Execute(Incomer incomer);

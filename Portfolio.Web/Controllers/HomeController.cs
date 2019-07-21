@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.BusinessLogic.Sample;
 using Portfolio.Data.Configurations;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Portfolio.Web.Controllers
@@ -20,9 +23,11 @@ namespace Portfolio.Web.Controllers
         }
 
         [HttpGet("Test")]
-        public async Task<IActionResult> Test()
+        [ProducesResponseType(typeof(SampleLogicResult), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IList<ValidationFailure>), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Test(SampleLogicIncomer incomer)
         {
-            return await DispatchLogicAsync(new SampleLogicIncomer());
+            return await DispatchLogicAsync(incomer);
         }
     }
 }

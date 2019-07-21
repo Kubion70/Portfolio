@@ -1,11 +1,14 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.MsDependencyInjection;
+using FluentValidation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Portfolio.Core.LogicAbstractions;
+using Portfolio.Core.QueryAbstractions;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Portfolio.IOC
 {
@@ -19,20 +22,36 @@ namespace Portfolio.IOC
         {
             Container = new WindsorContainer();
 
+            IServiceProvider serviceProvider = services != null ? WindsorRegistrationHelper.CreateServiceProvider(Container, services) : null;
+
+            var configuration = Container.Resolve<IConfiguration>();
+
             Container.Register(
                 Classes.FromAssemblyNamed(LOGIC_PROJECT_NAME)
                 .BasedOn(typeof(ILogic<>))
+                .OrBasedOn(typeof(IQuery<>))
+                .OrBasedOn(typeof(IValidator<>))
                 .WithService.FirstInterface()
                 .LifestyleTransient());
 
-            if (services != null)
-                return WindsorRegistrationHelper.CreateServiceProvider(Container, services);
-            else
-                return null;
+            Container.Register(
+                Component.For<IDbConnection>()
+                .Instance(new SqlConnection(configuration["ConnectionString"]))
+                .LifestyleTransient());
+
+            return serviceProvider;
+        }
+
+        public static void Register(params IRegistration[] registrations)
+        {
+            Container.Register(registrations);
         }
 
         public static ILogic<Result> ResolveLogic<Result>()
             where Result : ILogicResult
             => Container.Resolve<ILogic<Result>>();
+
+        public static IQuery<Result> ResolveQuery<Result>()
+            => Container.Resolve<IQuery<Result>>();
     }
 }

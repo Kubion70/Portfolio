@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio.Core.LogicAbstractions;
+using Portfolio.Core.QueryAbstractions;
 using Portfolio.IOC;
 using System.Linq;
 using System.Net;
@@ -26,6 +27,25 @@ namespace Portfolio.Web.Controllers
             else
             {
                 return new JsonResult(logicExecution.LogicResult);
+            }
+        }
+
+        protected async Task<IActionResult> DispatchQueryAsync<Result>(IQueryIncomer<Result> incomer)
+        {
+            var query = Handler.ResolveQuery<Result>();
+
+            var queryExecution = await query.ExecuteAsync(incomer);
+
+            if (queryExecution.ValidationErrors.Any())
+            {
+                return new JsonResult(queryExecution.ValidationErrors)
+                {
+                    StatusCode = (int)HttpStatusCode.BadRequest
+                };
+            }
+            else
+            {
+                return new JsonResult(queryExecution.QueryResult);
             }
         }
     }
