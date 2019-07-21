@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Portfolio.Database.Upgrader;
-using Portfolio.Web.Configurations;
+using Portfolio.Data.Configurations;
+using Portfolio.Database;
+using Portfolio.IOC;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace Portfolio.Web
 {
@@ -18,7 +20,7 @@ namespace Portfolio.Web
             Configuration = configuration;
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Client App Configuratin
             var clientAppConfiguration = new ClientAppConfiguration();
@@ -43,6 +45,8 @@ namespace Portfolio.Web
             {
                 c.SwaggerDoc("v1", new Info { Title = "Portfolio API", Version = "v1" });
             });
+
+            return Handler.Configure(services);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

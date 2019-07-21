@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Fakes\" />
-    <Folder Include="Seeds\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Seeds\" />
   </ItemGroup>
 
   <ItemGroup>

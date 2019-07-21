@@ -1,4 +1,4 @@
-﻿namespace Portfolio.Web.Configurations
+﻿namespace Portfolio.Data.Configurations
 {
     public class ClientAppConfiguration
     {

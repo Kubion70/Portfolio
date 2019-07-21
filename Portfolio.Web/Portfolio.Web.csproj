@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Portfolio.Database\Portfolio.Database.Upgrader\Portfolio.Database.Upgrader.csproj" />
+    <ProjectReference Include="..\Portfolio.Database\Portfolio.Database.csproj" />
+    <ProjectReference Include="..\Portfolio.Data\Portfolio.Data.csproj" />
+    <ProjectReference Include="..\Portfolio.IOC\Portfolio.IOC.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace Portfolio.Database.Upgrader
+namespace Portfolio.Database
 {
     public class DbUpgrader
     {
