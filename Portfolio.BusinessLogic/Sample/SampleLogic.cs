@@ -6,7 +6,7 @@ namespace Portfolio.BusinessLogic.Sample
 {
     public class SampleLogic : Logic<SampleLogicRequest, SampleLogicResult>
     {
-        protected async override Task<SampleLogicResult> Execute(SampleLogicRequest request)
+        protected override async Task<SampleLogicResult> Execute(SampleLogicRequest request)
         {
             throw new NotImplementedException();
         }
