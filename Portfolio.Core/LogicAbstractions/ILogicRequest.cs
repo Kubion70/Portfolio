@@ -1,6 +1,6 @@
 ﻿namespace Portfolio.Core.LogicAbstractions
 {
-    public interface ILogicIncomer<out Result>
+    public interface ILogicRequest<out Result>
         where Result : ILogicResult
     {
     }

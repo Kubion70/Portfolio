@@ -10,12 +10,12 @@ namespace Portfolio.Web.Controllers
 {
     public class ControllerBase : Controller
     {
-        protected async Task<IActionResult> DispatchLogicAsync<Result>(ILogicIncomer<Result> incomer)
+        protected async Task<IActionResult> DispatchLogicAsync<Result>(ILogicRequest<Result> request)
             where Result : ILogicResult
         {
             var logic = Handler.ResolveLogic<Result>();
 
-            var logicExecution = await logic.ExecuteAsync(incomer);
+            var logicExecution = await logic.ExecuteAsync(request);
 
             if (logicExecution.ValidationErrors.Any())
             {
@@ -30,11 +30,11 @@ namespace Portfolio.Web.Controllers
             }
         }
 
-        protected async Task<IActionResult> DispatchQueryAsync<Result>(IQueryIncomer<Result> incomer)
+        protected async Task<IActionResult> DispatchQueryAsync<Result>(IQueryRequest<Result> request)
         {
             var query = Handler.ResolveQuery<Result>();
 
-            var queryExecution = await query.ExecuteAsync(incomer);
+            var queryExecution = await query.ExecuteAsync(request);
 
             if (queryExecution.ValidationErrors.Any())
             {

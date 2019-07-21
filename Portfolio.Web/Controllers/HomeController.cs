@@ -25,7 +25,7 @@ namespace Portfolio.Web.Controllers
         [HttpGet("Test")]
         [ProducesResponseType(typeof(SampleLogicResult), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(IList<ValidationFailure>), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Test(SampleLogicIncomer incomer)
+        public async Task<IActionResult> Test(SampleLogicRequest incomer)
         {
             return await DispatchLogicAsync(incomer);
         }

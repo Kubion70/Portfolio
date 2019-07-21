@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Portfolio.BusinessLogic.Sample
 {
-    public class SampleLogic : Logic<SampleLogicIncomer, SampleLogicResult>
+    public class SampleLogic : Logic<SampleLogicRequest, SampleLogicResult>
     {
-        protected async override Task<SampleLogicResult> Execute(SampleLogicIncomer incomer)
+        protected async override Task<SampleLogicResult> Execute(SampleLogicRequest request)
         {
             throw new NotImplementedException();
         }

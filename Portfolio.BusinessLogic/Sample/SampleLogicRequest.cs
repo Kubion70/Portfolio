@@ -2,7 +2,7 @@
 
 namespace Portfolio.BusinessLogic.Sample
 {
-    public class SampleLogicIncomer : ILogicIncomer<SampleLogicResult>
+    public class SampleLogicRequest : ILogicRequest<SampleLogicResult>
     {
     }
 }
