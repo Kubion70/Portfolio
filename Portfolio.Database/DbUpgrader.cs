@@ -8,6 +8,8 @@ namespace Portfolio.Database
     {
         private string ConnectionString { get; }
 
+        private string AssemblyName { get; } = Assembly.GetExecutingAssembly().GetName().Name;
+
         public DbUpgrader(string connectionString)
         {
             ConnectionString = connectionString;
@@ -23,11 +25,11 @@ namespace Portfolio.Database
                 .LogToConsole();
 
             if (withScripts)
-                upgradeBuilder.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("Scripts"));
+                upgradeBuilder.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith(AssemblyName + ".Scripts"));
             if (withSeeds)
-                upgradeBuilder.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("Seeds"));
+                upgradeBuilder.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith(AssemblyName + ".Seeds"));
             if (withFakes)
-                upgradeBuilder.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith("Fakes"));
+                upgradeBuilder.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly(), s => s.StartsWith(AssemblyName + ".Fakes"));
 
             var result = upgradeBuilder.Build().PerformUpgrade();
 

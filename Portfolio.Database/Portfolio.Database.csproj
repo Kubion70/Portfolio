@@ -5,9 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Scripts\001_CreateBaseEntities.sql" />
+    <None Remove="Seeds\TechnologyKnownLevel.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\001_CreateBaseEntities.sql" />
+    <EmbeddedResource Include="Seeds\TechnologyKnownLevel.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Fakes\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Seeds\" />
   </ItemGroup>
 
   <ItemGroup>

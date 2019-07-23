@@ -4,6 +4,6 @@ namespace Portfolio.Core.QueryAbstractions
 {
     public interface IQuery<Result>
     {
-        Task<QueryExecution<Result>> ExecuteAsync(IQueryRequest<Result> incomer);
+        Task<QueryExecution<Result>> ExecuteAsync(IQueryRequest<Result> request);
     }
 }
