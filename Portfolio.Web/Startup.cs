@@ -22,10 +22,15 @@ namespace Portfolio.Web
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Client App Configuratin
+            // Client App Configuration
             var clientAppConfiguration = new ClientAppConfiguration();
             Configuration.Bind("ClientApp", clientAppConfiguration);
             services.AddSingleton(clientAppConfiguration);
+
+            // Translations Configuration
+            var translationsConfiguration = new TranslationsConfiguration();
+            Configuration.Bind("Translations", translationsConfiguration);
+            services.AddSingleton(translationsConfiguration);
 
             // Cors config
             services.AddCors(options =>

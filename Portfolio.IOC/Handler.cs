@@ -1,11 +1,14 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using CacheManager.Core;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.MsDependencyInjection;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Portfolio.Core.Database;
 using Portfolio.Core.LogicAbstractions;
 using Portfolio.Core.QueryAbstractions;
+using Portfolio.Core.Translations;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -35,8 +38,28 @@ namespace Portfolio.IOC
                 .LifestyleTransient());
 
             Container.Register(
+                Component.For<ITranslator>()
+                .ImplementedBy<Translator>()
+                .LifestyleTransient());
+
+            var cache = CacheFactory.Build<TranslationItem>("Translations", settings =>
+            {
+                settings.WithDictionaryHandle();
+            });
+
+            Container.Register(
+                Component.For<ICacheManager<TranslationItem>>()
+                .Instance(cache)
+                .LifestyleSingleton());
+
+            Container.Register(
                 Component.For<IDbConnection>()
                 .Instance(new SqlConnection(configuration["ConnectionString"]))
+                .LifestyleTransient());
+
+            Container.Register(
+                Component.For<IDatabaseWrapper>()
+                .ImplementedBy<DatabaseWrapper>()
                 .LifestyleTransient());
 
             return serviceProvider;

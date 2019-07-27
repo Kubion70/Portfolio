@@ -21,5 +21,7 @@ namespace Portfolio.Data.Entities
         /// Reference to <see cref="Translation"/>
         /// </summary>
         public int AboutMeDescriptionTranslationId { get; set; }
+
+        public string TopImageUrl { get; set; }
     }
 }

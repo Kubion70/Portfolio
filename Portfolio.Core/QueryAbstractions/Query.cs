@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using System.Data;
+using Portfolio.Core.Database;
 using System.Threading.Tasks;
 
 namespace Portfolio.Core.QueryAbstractions
 {
     public abstract class Query<Request, Result> : IQuery<Result> where Request : IQueryRequest<Result>
     {
-        public IDbConnection DbConnection { get; set; }
+        public IDatabaseWrapper Database { get; set; }
 
         public IValidator<Request> Validator { get; set; }
 

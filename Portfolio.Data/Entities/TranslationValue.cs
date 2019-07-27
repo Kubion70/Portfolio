@@ -1,18 +1,17 @@
 ﻿using Dapper.Contrib.Extensions;
-using Portfolio.Data.Entities.Abstractions;
 
 namespace Portfolio.Data.Entities
 {
     [Table(nameof(TranslationValue))]
-    public class TranslationValue : IEntity<int>
+    public class TranslationValue
     {
-        public int Id { get; set; }
-
+        [Key]
         /// <summary>
         /// References to <see cref="Translation"/>
         /// </summary>
         public int TranslationId { get; set; }
 
+        [Key]
         public string LanguageCountryCode { get; set; }
 
         public string Value { get; set; }

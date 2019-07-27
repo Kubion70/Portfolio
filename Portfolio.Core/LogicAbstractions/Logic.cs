@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using System.Data;
+using Portfolio.Core.Database;
 using System.Threading.Tasks;
 
 namespace Portfolio.Core.LogicAbstractions
@@ -8,7 +8,7 @@ namespace Portfolio.Core.LogicAbstractions
         where Request : ILogicRequest<Result>
         where Result : ILogicResult
     {
-        public IDbConnection DbConnection { get; set; }
+        public IDatabaseWrapper Database { get; set; }
 
         public IValidator<Request> Validator { get; set; }
 
