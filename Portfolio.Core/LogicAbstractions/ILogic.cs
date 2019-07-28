@@ -5,6 +5,6 @@ namespace Portfolio.Core.LogicAbstractions
     public interface ILogic<Result>
         where Result : ILogicResult
     {
-        Task<LogicExecution<Result>> ExecuteAsync(ILogicRequest<Result> incomer);
+        Task<LogicExecution<Result>> ExecuteAsync(ILogicRequest<Result> request);
     }
 }

@@ -1,10 +1,12 @@
 ﻿using CacheManager.Core;
+using Castle.MicroKernel.Lifestyle;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.MsDependencyInjection;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Portfolio.Core.Contexts;
 using Portfolio.Core.Database;
 using Portfolio.Core.LogicAbstractions;
 using Portfolio.Core.QueryAbstractions;
@@ -62,7 +64,19 @@ namespace Portfolio.IOC
                 .ImplementedBy<DatabaseWrapper>()
                 .LifestyleTransient());
 
+            Container.Register(
+                Component.For<IUserContext>()
+                .ImplementedBy<UserContext>()
+                .LifestyleScoped());
+
             return serviceProvider;
+        }
+
+        public static T Resolve<T>() => Container.Resolve<T>();
+
+        public static IDisposable BeginScope()
+        {
+            return Container.BeginScope();
         }
 
         public static void Register(params IRegistration[] registrations)

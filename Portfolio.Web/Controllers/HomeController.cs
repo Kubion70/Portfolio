@@ -3,7 +3,7 @@ using Portfolio.Data.Configurations;
 
 namespace Portfolio.Web.Controllers
 {
-    public class HomeController : ControllerBase
+    public class HomeController : Controller
     {
         private ClientAppConfiguration ClientAppConfiguration { get; set; }
 
