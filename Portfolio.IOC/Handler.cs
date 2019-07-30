@@ -4,6 +4,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.MsDependencyInjection;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Portfolio.Core.Contexts;
@@ -25,7 +26,8 @@ namespace Portfolio.IOC
 
         public static IServiceProvider Configure(IServiceCollection services = null)
         {
-            Container = new WindsorContainer();
+            if(Container == null)
+                Container = new WindsorContainer();
 
             IServiceProvider serviceProvider = services != null ? WindsorRegistrationHelper.CreateServiceProvider(Container, services) : null;
 
@@ -65,11 +67,24 @@ namespace Portfolio.IOC
                 .LifestyleTransient());
 
             Container.Register(
+                Component.For<UserContextFactory>()
+                .ImplementedBy<UserContextFactory>()
+                .LifestyleScoped());
+
+            Container.Register(
                 Component.For<IUserContext>()
-                .ImplementedBy<UserContext>()
+                .UsingFactory<UserContextFactory, IUserContext>(factory => factory.CreateUserContext())
                 .LifestyleScoped());
 
             return serviceProvider;
+        }
+
+        public static void ResetContainer()
+        {
+            if(Container != null)
+                Container.Dispose();
+
+            Container = new WindsorContainer();
         }
 
         public static T Resolve<T>() => Container.Resolve<T>();
@@ -81,6 +96,9 @@ namespace Portfolio.IOC
 
         public static void Register(params IRegistration[] registrations)
         {
+            if (Container == null)
+                Container = new WindsorContainer();
+
             Container.Register(registrations);
         }
 
