@@ -1,6 +1,8 @@
 ﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Portfolio.Core.Database;
 using Portfolio.Core.LogicAbstractions;
 using Portfolio.Core.QueryAbstractions;
 using Portfolio.IOC;
@@ -21,7 +23,7 @@ namespace Portfolio.Web.Controllers
         {
             if (!context.ExceptionHandled && context.Exception != null)
             {
-                context.Result = new JsonResult("An error occured while processing the request.")
+                context.Result = new JsonResult(context.Exception.Message)
                 {
                     StatusCode = (int)HttpStatusCode.InternalServerError
                 };
@@ -64,6 +66,8 @@ namespace Portfolio.Web.Controllers
             var query = Handler.ResolveQuery<Result>();
 
             var queryExecution = await query.ExecuteAsync(request);
+
+            Handler.Release(query);
 
             if (queryExecution.ValidationErrors.Any())
             {

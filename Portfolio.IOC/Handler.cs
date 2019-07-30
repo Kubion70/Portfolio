@@ -79,6 +79,8 @@ namespace Portfolio.IOC
             return serviceProvider;
         }
 
+        public static void Release(object objectToRelease) => Container.Release(objectToRelease);
+
         public static void ResetContainer()
         {
             if(Container != null)
