@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MainPageData } from '@core/models';
+import { MainPageService } from '@core/services';
 
 @Component({
   selector: 'app-home-main',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeMainComponent implements OnInit {
 
-  constructor() { }
+  mainPageData: MainPageData;
+
+  constructor(
+    private mainPageService: MainPageService
+  ) { }
 
   ngOnInit() {
+    this.mainPageService.getMainPageData().toPromise().then(result => {
+      this.mainPageData = result;
+    });
   }
 
 }

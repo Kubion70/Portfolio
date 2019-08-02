@@ -5,14 +5,7 @@
 export const environment = {
   production: false,
   apiServer: {
-    url: "http://localhost:5000/api"
-  },
-  staticFiles: {
-    topImageUrl: ""
-  },
-  contact: {
-    mail: "",
-    phone: ""
+    url: "http://localhost:5000/api/"
   }
 };
 

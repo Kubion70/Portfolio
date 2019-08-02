@@ -17,6 +17,7 @@ namespace Portfolio.Web.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [ProducesResponseType(typeof(IList<ValidationFailure>), (int)HttpStatusCode.BadRequest)]
+    [Route("api/[controller]")]
     public class ControllerBase : Controller
     {
         public override void OnActionExecuted(ActionExecutedContext context)

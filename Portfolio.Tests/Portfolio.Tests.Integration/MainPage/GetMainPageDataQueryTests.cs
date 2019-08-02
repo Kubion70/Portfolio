@@ -46,9 +46,9 @@ namespace Portfolio.Tests.Integration.MainPage
         }
 
         [Test]
-        public async Task DataNotExists_QueryThrows()
+        public void DataNotExists_QueryThrows()
         {
-            var userContext = GetUserContext(KnownCulture.Polish);
+            GetUserContext(KnownCulture.Polish);
 
             Assert.ThrowsAsync<InvalidOperationException>(async () => await DispatchQueryAsync(new GetMainPageDataRequest()));
         }

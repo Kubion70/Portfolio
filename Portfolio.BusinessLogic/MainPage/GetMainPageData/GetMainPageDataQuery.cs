@@ -1,4 +1,5 @@
 ﻿using Portfolio.Core.QueryAbstractions;
+using System.Linq;
 using System.Threading.Tasks;
 using static Portfolio.BusinessLogic.MainPage.GetMainPageData.GetMainPageDataResult;
 
@@ -14,6 +15,10 @@ namespace Portfolio.BusinessLogic.MainPage.GetMainPageData
                 GET_KNOWN_TECHNOLOGIES_SQL, 
                 new { MainPageConfigurationId = queryResult.MainPageId });
 
+            var offerItems = await Database.QueryAsync<OfferItemQurryResult>(
+                GET_OFFER_ITEMS_SQL,
+                new { MainPageConfigurationId = queryResult.MainPageId });
+
             return new GetMainPageDataResult
             {
                 Title = queryResult.Title,
@@ -21,7 +26,15 @@ namespace Portfolio.BusinessLogic.MainPage.GetMainPageData
                 TopImageUrl = queryResult.TopImageUrl,
                 TopDescription = await Translator.GetTranslationAsync(queryResult.TopDescriptionTranslationId, UserContext.Culture),
                 AboutMeDescription = await Translator.GetTranslationAsync(queryResult.AboutMeDescriptionTranslationId, UserContext.Culture),
-                KnownTechnologies = knownTechnologies
+                Phone = queryResult.Phone,
+                Email = queryResult.Email,
+                KnownTechnologies = knownTechnologies,
+                OfferItems = offerItems.Select(async o => new OfferItemResult
+                {
+                    Icon = o.Icon,
+                    Title = await Translator.GetTranslationAsync(o.TitleTranslationId, UserContext.Culture),
+                    Description = await Translator.GetTranslationAsync(o.DescriptionTranslationId, UserContext.Culture)
+                }).Select(o => o.Result)
             };
         }
 
@@ -31,6 +44,8 @@ SELECT TOP 1
 	mpc.Title AS Title,
 	mpc.SubTitle AS SubTitle,
 	mpc.TopImageUrl AS TopImageUrl,
+    mpc.Email,
+    mpc.Phone,
 	mpc.AboutMeDescriptionTranslationId AS AboutMeDescriptionTranslationId,
 	mpc.TopDescriptionTranslationId AS TopDescriptionTranslationId
 FROM MainPageConfiguration mpc
@@ -43,6 +58,15 @@ SELECT
 	kt.Name AS Name
 FROM KnownTechnology kt
 WHERE kt.MainPageConfigurationId = @MainPageConfigurationId;
+";
+
+        private const string GET_OFFER_ITEMS_SQL = @"
+SELECT
+	o.Icon,
+	o.TitleTranslationId,
+	o.DescriptionTranslationId
+FROM OfferItem o
+WHERE o.MainPageConfigurationId = @MainPageConfigurationId
 ";
 
         internal class QueryResultDataSet
@@ -58,6 +82,19 @@ WHERE kt.MainPageConfigurationId = @MainPageConfigurationId;
             public int AboutMeDescriptionTranslationId { get; set; }
 
             public int TopDescriptionTranslationId { get; set; }
+
+            public string Phone { get; set; }
+
+            public string Email { get; set; }
+        }
+
+        internal class OfferItemQurryResult
+        {
+            public string Icon { get; set; }
+
+            public int TitleTranslationId { get; set; }
+
+            public int DescriptionTranslationId { get; set; }
         }
     }
 }
