@@ -8,12 +8,22 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<app-home-main-top-section></app-home-main-top-section>
+<app-home-main-top-section 
+    [topImageUrl]="mainPageData.topImageUrl" 
+    [topDescription]="mainPageData.topDescription"
+    [title]="mainPageData.title"
+    [subTitle]="mainPageData.subTitle">
+</app-home-main-top-section>
 
-<app-home-services></app-home-services>
+<app-home-services [services]="mainPageData.offerItems"></app-home-services>
 
-<app-about-me-section></app-about-me-section>
+<app-about-me-section [description]="mainPageData.aboutMeDescription" [technologies]="mainPageData.knownTechnologies"></app-about-me-section>
 
-<app-contact-section></app-contact-section>
+<app-contact-section [phone]="mainPageData.phone" [email]="mainPageData.email"></app-contact-section>
 
-<app-footer></app-footer>
+<app-footer
+    [facebook]="mainPageData.facebook"
+    [linkedIn]="mainPageData.linkedIn"
+    [gitHub]="mainPageData.gitHub"
+    [gitLab]="mainPageData.gitLab">
+</app-footer>

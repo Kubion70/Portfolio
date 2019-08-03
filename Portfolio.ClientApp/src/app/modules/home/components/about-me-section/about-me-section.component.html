@@ -3,24 +3,31 @@
         <h1 class="about-me-heading">About me</h1>
         <p class="about-me-description">{{description}}</p>
         <div class="row">
-            <div class="col-md-6 col-xs-12 tech-section">
-                <h3>
+            <div class="col-xs-12 tech-section">
+                <h3 style="text-align: center">
                     Technologies by knowledge
                 </h3>
-                <h4>Well known:</h4>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let tech of wellKnownTechs" selected style="background-color: #7FFFD4; color: #000">
-                        {{tech.Name}}
-                    </mat-chip>
-                </mat-chip-list>
-                <h4>Enough to work with:</h4>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let tech of enoughKnownTechs" selected style="background-color: #ADD8E6; color: #000">
-                        {{tech.Name}}
-                    </mat-chip>
-                </mat-chip-list>
+                <div class="row">
+                    <div class="col-xs-6" style="border-right: 1px solid ghostwhite">
+                        <h4 style="text-align: right">Well known</h4>
+                        <mat-chip-list class="div-wrapper-right">
+                            <mat-chip *ngFor="let tech of wellKnownTechs" selected style="background-color: #7FFFD4; color: #000;">
+                                {{tech.name}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                    <div class="col-xs-6">
+                        <h4>Enough to work with</h4>
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let tech of enoughKnownTechs" selected style="background-color: #ADD8E6; color: #000">
+                                {{tech.name}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 col-xs-12">
+            <!--
+                <div class="col-md-6 col-xs-12">
                 <h3 class="opinions-header">Opinions about my work</h3>
                 <mat-card class="quote">
                     <p>{{opinion.Content}}</p>
@@ -32,6 +39,7 @@
                     </div>
                 </mat-card>
             </div>
+            -->
         </div>
     </div>
 </div>

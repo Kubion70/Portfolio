@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -9,6 +9,8 @@
     <None Remove="Scripts\002_AddTopImageUrlToMainPageConfiguration.sql" />
     <None Remove="Scripts\003_AddTranslationIdToTranslationValue.sql" />
     <None Remove="Scripts\004_MakeNewDoubleKeyInTranslationValue.sql" />
+    <None Remove="Scripts\005_AddContantDataToMainPageConfiguration.sql" />
+    <None Remove="Scripts\006_AddSocialMediasToMainPageConfiguration.sql" />
     <None Remove="Seeds\TechnologyKnownLevel.sql" />
   </ItemGroup>
 
@@ -17,6 +19,8 @@
     <EmbeddedResource Include="Scripts\002_AddTopImageUrlToMainPageConfiguration.sql" />
     <EmbeddedResource Include="Scripts\003_AddTranslationIdToTranslationValue.sql" />
     <EmbeddedResource Include="Scripts\004_MakeNewDoubleKeyInTranslationValue.sql" />
+    <EmbeddedResource Include="Scripts\005_AddContantDataToMainPageConfiguration.sql" />
+    <EmbeddedResource Include="Scripts\006_AddSocialMediasToMainPageConfiguration.sql" />
     <EmbeddedResource Include="Seeds\TechnologyKnownLevel.sql" />
   </ItemGroup>
 

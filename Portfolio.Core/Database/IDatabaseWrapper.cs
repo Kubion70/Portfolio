@@ -9,6 +9,8 @@ namespace Portfolio.Core.Database
 {
     public interface IDatabaseWrapper
     {
+        IDbTransaction BeginTransaction();
+
         Task<int> ExecuteAsync(CommandDefinition command);
 
         Task<int> ExecuteAsync(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null);

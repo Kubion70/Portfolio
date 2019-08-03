@@ -5,13 +5,13 @@ namespace Portfolio.Data.Entities
     [Table(nameof(TranslationValue))]
     public class TranslationValue
     {
-        [Key]
+        [ExplicitKey]
         /// <summary>
         /// References to <see cref="Translation"/>
         /// </summary>
         public int TranslationId { get; set; }
 
-        [Key]
+        [ExplicitKey]
         public string LanguageCountryCode { get; set; }
 
         public string Value { get; set; }

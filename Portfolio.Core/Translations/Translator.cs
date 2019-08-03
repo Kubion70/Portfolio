@@ -38,7 +38,7 @@ namespace Portfolio.Core.Translations
                 new
                 {
                     TranslationId = translationId,
-                    LanguageCountyCode = culture.GetDisplayName()
+                    LanguageCountryCode = culture.GetDisplayName()
                 },
                 transaction);
 
@@ -75,7 +75,7 @@ namespace Portfolio.Core.Translations
                 new
                 {
                     TranslationId = translationId,
-                    LanguageCountyCode = KnownCulture.English.GetDisplayName()
+                    LanguageCountryCode = KnownCulture.English.GetDisplayName()
                 },
                 transaction);
 
@@ -153,7 +153,7 @@ SELECT tv.Value
 FROM Translation t
 INNER JOIN TranslationValue tv
 	ON tv.TranslationId = t.Id
-	AND tv.LanguageCountryCode = @LanguageCountyCode
+	AND tv.LanguageCountryCode = @LanguageCountryCode
 WHERE t.Id = @TranslationId;
 ";
 

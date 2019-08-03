@@ -43,11 +43,10 @@ namespace Portfolio.Tests.Unit.CoreTests.TranslatorTests
         }
 
         [Test]
-        public async Task TranslationNotInCacheNotInDb_TranslatorThrows()
+        public void TranslationNotInCacheNotInDb_TranslatorThrows()
         {
             int translationId = 1;
             var culture = KnownCulture.Polish;
-            var translationValue = "test";
 
             var cache = CacheFactory.Build<TranslationItem>(s => s.WithDictionaryHandle());
 

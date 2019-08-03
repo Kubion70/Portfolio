@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Portfolio.Data.Configurations;
 using Portfolio.Database;
 using Portfolio.IOC;
@@ -31,6 +33,8 @@ namespace Portfolio.Web
             var translationsConfiguration = new TranslationsConfiguration();
             Configuration.Bind("Translations", translationsConfiguration);
             services.AddSingleton(translationsConfiguration);
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Cors config
             services.AddCors(options =>
@@ -83,6 +87,8 @@ namespace Portfolio.Web
                     c.RoutePrefix = "api";
                 });
             }
+
+            app.UseRequestLocalization();
 
             app.UseMvcWithDefaultRoute();
         }

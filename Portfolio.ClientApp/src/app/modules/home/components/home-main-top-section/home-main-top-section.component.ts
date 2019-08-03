@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '@env/environment';
 
 @Component({
@@ -7,8 +7,14 @@ import { environment } from '@env/environment';
   styleUrls: ['./home-main-top-section.component.scss']
 })
 export class HomeMainTopSectionComponent implements OnInit {
-
-  topImageUrl = environment.staticFiles.topImageUrl;
+  @Input()
+  title: string;
+  @Input()
+  subTitle: string;
+  @Input()
+  topDescription: string;
+  @Input()
+  topImageUrl: string;
 
   constructor() { }
 
