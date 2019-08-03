@@ -1,22 +1,22 @@
 <div class="container footer-container">
     <div class="row between-xs center-xs">
         <div class="col footer-fabs-container">
-            <a href="#">
+            <a *ngIf="facebook" [href]="facebook" target="_blank">
                 <button mat-mini-fab class="footer-fab">
                     <i class="fab fa-facebook-f"></i>
                 </button>
             </a>
-            <a href="#">
+            <a *ngIf="linkedIn" [href]="linkedIn" target="_blank">
                 <button mat-mini-fab class="footer-fab">
                     <i class="fab fa-linkedin-in"></i>
                 </button>
             </a>
-            <a href="#">
+            <a *ngIf="gitHub" [href]="github" target="_blank">
                 <button mat-mini-fab class="footer-fab">
                     <i class="fab fa-github"></i>
                 </button>
             </a>
-            <a href="#">
+            <a *ngIf="gitLab" [href]="gitLab" target="_blank">
                 <button mat-mini-fab class="footer-fab">
                     <i class="fab fa-gitlab"></i>
                 </button>

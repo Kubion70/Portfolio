@@ -11,6 +11,8 @@ namespace Portfolio.Tests.Integration
 
         public KnownTechnologyObjectMother KnownTechnologyObjectMother { get; }
 
+        public OfferItemObjectMother OfferItemObjectMother { get; }
+
         public ObjectMothers()
         {
             var translator = Handler.Resolve<ITranslator>();
@@ -18,6 +20,7 @@ namespace Portfolio.Tests.Integration
 
             MainPageConfiguration = new MainPageConfigurationObjectMother(translator, database);
             KnownTechnologyObjectMother = new KnownTechnologyObjectMother(database);
+            OfferItemObjectMother = new OfferItemObjectMother(translator, database);
         }
     }
 }

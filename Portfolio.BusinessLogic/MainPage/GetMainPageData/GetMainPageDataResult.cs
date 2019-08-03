@@ -19,6 +19,14 @@ namespace Portfolio.BusinessLogic.MainPage.GetMainPageData
 
         public string Email { get; set; }
 
+        public string Facebook { get; set; }
+
+        public string LinkedIn { get; set; }
+
+        public string GitHub { get; set; }
+
+        public string GitLab { get; set; }
+
         public IEnumerable<KnownTechnologyResult> KnownTechnologies { get; set; }
 
         public IEnumerable<OfferItemResult> OfferItems { get; set; }

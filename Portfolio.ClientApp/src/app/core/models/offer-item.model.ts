@@ -1,5 +1,5 @@
 export class OfferItem {
-    Icon: String;
-    Title: String;
-    Description: String;
+    icon: String;
+    title: String;
+    description: String;
 }

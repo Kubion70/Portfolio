@@ -8,6 +8,10 @@ export class MainPageData {
   public topDescription: string;
   public phone: string;
   public email: string;
+  public facebook: string;
+  public linkedIn: string;
+  public gitHub: string;
+  public gitLab: string;
   public knownTechnologies: Technology[];
   public offerItems: OfferItem[];
 }

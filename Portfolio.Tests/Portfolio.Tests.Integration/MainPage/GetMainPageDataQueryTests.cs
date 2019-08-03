@@ -25,6 +25,13 @@ namespace Portfolio.Tests.Integration.MainPage
                 technologies.Add(await ObjectMothers.KnownTechnologyObjectMother.CreateAsync(mainPageConfiguration.Id));
             }
 
+            var offerItems = new List<OfferItem>();
+
+            for(int i = 0; i < 10; i++)
+            {
+                offerItems.Add(await ObjectMothers.OfferItemObjectMother.Create(mainPageConfiguration.Id));
+            }
+
             var queryExecution = await DispatchQueryAsync(new GetMainPageDataRequest());
 
             Assert.That(queryExecution.ValidationErrors, Is.Empty);
@@ -32,6 +39,12 @@ namespace Portfolio.Tests.Integration.MainPage
             Assert.That(queryExecution.QueryResult.Title, Is.EqualTo(mainPageConfiguration.Title));
             Assert.That(queryExecution.QueryResult.SubTitle, Is.EqualTo(mainPageConfiguration.SubTitle));
             Assert.That(queryExecution.QueryResult.TopImageUrl, Is.EqualTo(mainPageConfiguration.TopImageUrl));
+            Assert.That(queryExecution.QueryResult.Phone, Is.EqualTo(mainPageConfiguration.Phone));
+            Assert.That(queryExecution.QueryResult.Email, Is.EqualTo(mainPageConfiguration.Email));
+            Assert.That(queryExecution.QueryResult.Facebook, Is.EqualTo(mainPageConfiguration.Facebook));
+            Assert.That(queryExecution.QueryResult.LinkedIn, Is.EqualTo(mainPageConfiguration.LinkedIn));
+            Assert.That(queryExecution.QueryResult.GitHub, Is.EqualTo(mainPageConfiguration.GitHub));
+            Assert.That(queryExecution.QueryResult.GitLab, Is.EqualTo(mainPageConfiguration.GitLab));
 
             var topDescriptionTranslated = await Translator.GetTranslationAsync(mainPageConfiguration.TopDescriptionTranslationId, userContext.Culture);
             var aboutMeDescriptionTranslated = await Translator.GetTranslationAsync(mainPageConfiguration.AboutMeDescriptionTranslationId, userContext.Culture);
@@ -43,6 +56,14 @@ namespace Portfolio.Tests.Integration.MainPage
             Assert.That(queryExecution.QueryResult
                 .KnownTechnologies.All(t => technologies.Any(dbTech => dbTech.Name == t.Name && dbTech.KnownLevel == t.KnownLevel)),
                 Is.True);
+
+            Assert.That(queryExecution.QueryResult.OfferItems.Count(), Is.EqualTo(offerItems.Count));
+            Assert.That(queryExecution.QueryResult
+                .OfferItems.All(o => offerItems.Any(dbOffer => {
+                    return dbOffer.Icon == o.Icon
+                        && Translator.GetTranslationAsync(dbOffer.TitleTranslationId, userContext.Culture).Result == o.Title
+                        && Translator.GetTranslationAsync(dbOffer.DescriptionTranslationId, userContext.Culture).Result == o.Description;
+                    })));
         }
 
         [Test]

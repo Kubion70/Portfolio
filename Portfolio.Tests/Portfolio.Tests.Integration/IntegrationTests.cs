@@ -31,14 +31,24 @@ namespace Portfolio.Tests.Integration
 
         private IConfiguration Configuration { get; set; }
 
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            Configuration = GetIConfigurationRoot();
+
+            new DbUpgrader(Configuration["ConnectionString"]).Upgrade();
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            DropDatabase.For.SqlDatabase(Configuration["ConnectionString"]);
+        }
+
         [SetUp]
         public void Init()
         {
             Handler.ResetContainer();
-
-            Configuration = GetIConfigurationRoot();
-
-            new DbUpgrader(Configuration["ConnectionString"]).Upgrade();
 
             TransactonScope = new TransactionScope(TransactionScopeOption.Required, TransactionScopeAsyncFlowOption.Enabled);
 
@@ -74,8 +84,6 @@ namespace Portfolio.Tests.Integration
 
             if (TransactonScope != null)
                 TransactonScope.Dispose();
-
-            DropDatabase.For.SqlDatabase(Configuration["ConnectionString"]);
         }
 
         protected IUserContext GetUserContext(KnownCulture culture)

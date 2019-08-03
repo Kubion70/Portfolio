@@ -30,7 +30,7 @@ export class AboutMeSectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.wellKnownTechs = this.technologies.filter(t => t.KnownLevel === TechKnownLevel.WellKnown);
-    this.enoughKnownTechs = this.technologies.filter(t => t.KnownLevel === TechKnownLevel.EnoughToWorkWith);
+    this.wellKnownTechs = this.technologies.filter(t => t.knownLevel === TechKnownLevel.WellKnown);
+    this.enoughKnownTechs = this.technologies.filter(t => t.knownLevel === TechKnownLevel.EnoughToWorkWith);
   }
 }

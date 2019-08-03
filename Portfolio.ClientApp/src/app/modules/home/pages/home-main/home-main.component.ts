@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainPageData } from '@core/models';
-import { MainPageService } from '@core/services';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-main',
@@ -12,13 +12,12 @@ export class HomeMainComponent implements OnInit {
   mainPageData: MainPageData;
 
   constructor(
-    private mainPageService: MainPageService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.mainPageService.getMainPageData().toPromise().then(result => {
-      this.mainPageData = result;
+    this.route.data.subscribe((data: { mainPageData: MainPageData }) => {
+      this.mainPageData = data.mainPageData;
     });
   }
-
 }

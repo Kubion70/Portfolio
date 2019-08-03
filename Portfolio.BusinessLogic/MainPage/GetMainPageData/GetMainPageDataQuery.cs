@@ -1,4 +1,5 @@
 ﻿using Portfolio.Core.QueryAbstractions;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static Portfolio.BusinessLogic.MainPage.GetMainPageData.GetMainPageDataResult;
@@ -19,6 +20,17 @@ namespace Portfolio.BusinessLogic.MainPage.GetMainPageData
                 GET_OFFER_ITEMS_SQL,
                 new { MainPageConfigurationId = queryResult.MainPageId });
 
+            var offerItemsResult = new List<OfferItemResult>();
+            foreach(var item in offerItems)
+            {
+                offerItemsResult.Add(new OfferItemResult
+                {
+                    Icon = item.Icon,
+                    Title = await Translator.GetTranslationAsync(item.TitleTranslationId, UserContext.Culture),
+                    Description = await Translator.GetTranslationAsync(item.DescriptionTranslationId, UserContext.Culture)
+                });
+            }
+
             return new GetMainPageDataResult
             {
                 Title = queryResult.Title,
@@ -28,13 +40,12 @@ namespace Portfolio.BusinessLogic.MainPage.GetMainPageData
                 AboutMeDescription = await Translator.GetTranslationAsync(queryResult.AboutMeDescriptionTranslationId, UserContext.Culture),
                 Phone = queryResult.Phone,
                 Email = queryResult.Email,
+                Facebook = queryResult.Facebook,
+                LinkedIn = queryResult.LinkedIn,
+                GitHub = queryResult.GitHub,
+                GitLab = queryResult.GitLab,
                 KnownTechnologies = knownTechnologies,
-                OfferItems = offerItems.Select(async o => new OfferItemResult
-                {
-                    Icon = o.Icon,
-                    Title = await Translator.GetTranslationAsync(o.TitleTranslationId, UserContext.Culture),
-                    Description = await Translator.GetTranslationAsync(o.DescriptionTranslationId, UserContext.Culture)
-                }).Select(o => o.Result)
+                OfferItems = offerItemsResult
             };
         }
 
@@ -46,6 +57,10 @@ SELECT TOP 1
 	mpc.TopImageUrl AS TopImageUrl,
     mpc.Email,
     mpc.Phone,
+    mpc.Facebook,
+    mpc.LinkedIn,
+    mpc.GitHub,
+    mpc.GitLab,
 	mpc.AboutMeDescriptionTranslationId AS AboutMeDescriptionTranslationId,
 	mpc.TopDescriptionTranslationId AS TopDescriptionTranslationId
 FROM MainPageConfiguration mpc
@@ -86,6 +101,14 @@ WHERE o.MainPageConfigurationId = @MainPageConfigurationId
             public string Phone { get; set; }
 
             public string Email { get; set; }
+
+            public string Facebook { get; set; }
+
+            public string LinkedIn { get; set; }
+
+            public string GitHub { get; set; }
+
+            public string GitLab { get; set; }
         }
 
         internal class OfferItemQurryResult

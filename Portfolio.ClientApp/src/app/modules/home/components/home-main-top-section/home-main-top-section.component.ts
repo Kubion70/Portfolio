@@ -8,8 +8,11 @@ import { environment } from '@env/environment';
 })
 export class HomeMainTopSectionComponent implements OnInit {
   @Input()
+  title: string;
+  @Input()
+  subTitle: string;
+  @Input()
   topDescription: string;
-
   @Input()
   topImageUrl: string;
 
