@@ -7,11 +7,14 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.60.6" />
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
+    <PackageReference Include="FluentEmail.Core" Version="2.5.1" />
+    <PackageReference Include="FluentEmail.Smtp" Version="2.5.2" />
     <PackageReference Include="FluentValidation" Version="8.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Portfolio.Core\Portfolio.Core.csproj" />
+    <ProjectReference Include="..\Portfolio.Resources\Portfolio.Resources.csproj" />
   </ItemGroup>
 
 </Project>

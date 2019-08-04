@@ -34,6 +34,10 @@ namespace Portfolio.Web
             Configuration.Bind("Translations", translationsConfiguration);
             services.AddSingleton(translationsConfiguration);
 
+            var smtpConfiguration = new SmtpConfiguration();
+            Configuration.Bind("Smtp", smtpConfiguration);
+            services.AddSingleton(smtpConfiguration);
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Cors config
