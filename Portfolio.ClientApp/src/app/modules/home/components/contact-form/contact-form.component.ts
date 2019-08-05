@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher, MatSnackBar } from '@angular/material';
-import { ErrorSnackBarComponent } from '@shared/components/error-snack-bar/error-snack-bar.component';
+import { ErrorSnackBarComponent, SuccessSnackBarComponent } from '@shared/components';
+import { MainPageService } from '@core/services';
+import { MailContact } from '@core/models';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-form',
@@ -9,6 +12,8 @@ import { ErrorSnackBarComponent } from '@shared/components/error-snack-bar/error
   styleUrls: ['./contact-form.component.scss']
 })
 export class ContactFormComponent implements OnInit {
+
+  requestProcessing: boolean;
 
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -22,7 +27,10 @@ export class ContactFormComponent implements OnInit {
 
   matcher = new DefaultErrorStateMatcher();
 
-  constructor(private matSnackBar: MatSnackBar) { }
+  constructor(
+    private matSnackBar: MatSnackBar,
+    private mainPageService: MainPageService
+    ) { }
 
   ngOnInit() {
   }
@@ -32,7 +40,34 @@ export class ContactFormComponent implements OnInit {
       this.matSnackBar.openFromComponent(ErrorSnackBarComponent, {
         data: {
           message: "Contact form has errors. Please check your data and try again."
-        }
+        },
+        duration: 3000
+      });
+    } else {
+      this.requestProcessing = true;
+      this.mainPageService.sendContactingMail(this.contactForm.value as MailContact).toPromise()
+      .then(() => {
+        this.matSnackBar.openFromComponent(SuccessSnackBarComponent, {
+          data: {
+            message: "Message has been sent."
+          },
+          duration: 3000
+        });
+        this.contactForm.reset();
+        this.contactForm.markAsUntouched();
+        this.contactForm.updateValueAndValidity();
+      })
+      .catch((result: HttpErrorResponse) => {
+        console.error(result);
+        this.matSnackBar.openFromComponent(ErrorSnackBarComponent, {
+          data: {
+            message: "Server encountered an error. Please try again later."
+          },
+          duration: 3000
+        });
+      })
+      .finally(() => {
+        this.requestProcessing = false;
       });
     }
   }
@@ -41,6 +76,6 @@ export class ContactFormComponent implements OnInit {
 export class DefaultErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(control && control.invalid && (control.touched || isSubmitted));
   }
 }

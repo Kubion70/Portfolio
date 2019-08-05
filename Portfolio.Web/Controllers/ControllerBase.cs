@@ -1,8 +1,6 @@
 ﻿using FluentValidation.Results;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Portfolio.Core.Database;
 using Portfolio.Core.LogicAbstractions;
 using Portfolio.Core.QueryAbstractions;
 using Portfolio.IOC;
@@ -48,6 +46,8 @@ namespace Portfolio.Web.Controllers
             var logic = Handler.ResolveLogic<Result>();
 
             var logicExecution = await logic.ExecuteAsync(request);
+
+            Handler.Release(logic);
 
             if (logicExecution.ValidationErrors.Any())
             {

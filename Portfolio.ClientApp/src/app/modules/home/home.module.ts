@@ -10,6 +10,7 @@ import { ContactSectionComponent } from './components/contact-section/contact-se
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '@shared/shared.module';
+import { ErrorSnackBarComponent, SuccessSnackBarComponent } from '@shared/components';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,10 @@ import { SharedModule } from '@shared/shared.module';
     CommonModule,
     HomeRoutingModule,
     SharedModule
+  ],
+  entryComponents: [
+    ErrorSnackBarComponent,
+    SuccessSnackBarComponent
   ]
 })
 export class HomeModule { }

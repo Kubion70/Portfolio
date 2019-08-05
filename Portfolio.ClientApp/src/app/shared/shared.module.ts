@@ -5,10 +5,10 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, Mat
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ErrorSnackBarComponent } from './components/error-snack-bar/error-snack-bar.component';
+import { ErrorSnackBarComponent, SuccessSnackBarComponent } from './components';
 
 @NgModule({
-  declarations: [ErrorSnackBarComponent],
+  declarations: [ErrorSnackBarComponent, SuccessSnackBarComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -29,7 +29,9 @@ import { ErrorSnackBarComponent } from './components/error-snack-bar/error-snack
     MatInputModule,
     MatChipsModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ErrorSnackBarComponent,
+    SuccessSnackBarComponent
   ],
   providers: [
     MatSnackBar

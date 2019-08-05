@@ -60,7 +60,8 @@
             <button 
                 mat-raised-button 
                 color="primary" 
-                type="submit" >
+                type="submit"
+                [disabled]="!contactForm.valid || requestProcessing">
                 <mat-icon>send</mat-icon> Send
             </button>
         </div>
