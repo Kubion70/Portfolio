@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatChipsModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatChipsModule, MatSnackBarModule, MatSnackBar } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorSnackBarComponent, SuccessSnackBarComponent } from './components';
 
 @NgModule({
-  declarations: [],
+  declarations: [ErrorSnackBarComponent, SuccessSnackBarComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -14,7 +16,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatButtonModule,
@@ -23,7 +27,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    ErrorSnackBarComponent,
+    SuccessSnackBarComponent
+  ],
+  providers: [
+    MatSnackBar
   ]
 })
 export class SharedModule { }
