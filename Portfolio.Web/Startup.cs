@@ -10,6 +10,7 @@ using Portfolio.Database;
 using Portfolio.IOC;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.IO;
 
 namespace Portfolio.Web
 {
@@ -92,9 +93,26 @@ namespace Portfolio.Web
                 });
             }
 
+            var options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("/index.html");
+            app.UseDefaultFiles(options);
+            app.UseStaticFiles();
+
             app.UseRequestLocalization();
 
             app.UseMvcWithDefaultRoute();
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if(context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+                {
+                    context.Request.Path = "/index.html";
+                    context.Response.StatusCode = 200;
+                    await next();
+                }
+            });
         }
     }
 }

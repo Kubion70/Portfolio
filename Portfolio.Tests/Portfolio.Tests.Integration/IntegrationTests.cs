@@ -102,8 +102,11 @@ namespace Portfolio.Tests.Integration
 
         private static IConfigurationRoot GetIConfigurationRoot()
         {
+            string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
             return new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile($"appsettings.{env}.json", true, true)
                 .Build();
         }
 
