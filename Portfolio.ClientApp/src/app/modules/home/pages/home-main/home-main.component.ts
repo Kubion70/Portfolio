@@ -23,4 +23,10 @@ export class HomeMainComponent implements OnInit {
       this.titleService.setTitle(this.mainPageData.title + ' - ' + this.mainPageData.subTitle);
     });
   }
+
+  scroll(id: string) {
+    const el = document.getElementById(id);
+    el.scrollIntoView({ block: 'start',  behavior: 'smooth' });
+    el.scrollTop += 32;
+  }
 }
