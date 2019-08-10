@@ -7,6 +7,12 @@
     -moz-box-shadow: inset 43px 88px 300px -87px rgba(0,0,0,0.75);
     box-shadow: inset 43px 88px 300px -87px rgba(0,0,0,0.75);
     position: relative;
+
+    @media (max-width: 1280px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .main-top-image {
@@ -41,16 +47,15 @@
 
 .main-top-section {
     font-family: Roboto;
-    position: absolute;
 
     @media (min-width: 1280px) {
         left: 5vw;
         top: 30vh;
+        position: absolute;
     }
 
     @media (max-width: 1280px) {
         width: 100%;
-        top: 30vh;
     }
 }
 
@@ -87,7 +92,10 @@
 
 .main-top-check-details {
     text-align: center;
-    margin-top: 10vh;
+
+    @media (min-width: 1280px) {
+        margin-top: 10vh;
+    }
 }
 
 .main-top-check-details-fab {
