@@ -67,3 +67,11 @@
 .pt-2 {
     padding-top: 2rem;
 }
+
+.left-tech-header {
+    text-align: start;
+
+    @media (min-width: 1280px) {
+        text-align: end;
+    }
+}

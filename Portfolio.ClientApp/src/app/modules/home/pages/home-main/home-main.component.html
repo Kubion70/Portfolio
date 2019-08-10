@@ -12,7 +12,8 @@
     [topImageUrl]="mainPageData.topImageUrl" 
     [topDescription]="mainPageData.topDescription"
     [title]="mainPageData.title"
-    [subTitle]="mainPageData.subTitle">
+    [subTitle]="mainPageData.subTitle"
+    (detailsClick)="scroll('offer')">
 </app-home-main-top-section>
 
 <app-home-services [services]="mainPageData.offerItems" id="offer"></app-home-services>

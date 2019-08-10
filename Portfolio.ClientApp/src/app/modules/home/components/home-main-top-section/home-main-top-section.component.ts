@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { environment } from '@env/environment';
 
 @Component({
@@ -15,6 +15,9 @@ export class HomeMainTopSectionComponent implements OnInit {
   topDescription: string;
   @Input()
   topImageUrl: string;
+
+  @Output()
+  detailsClick = new EventEmitter();
 
   constructor() { }
 

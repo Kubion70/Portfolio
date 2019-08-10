@@ -5,7 +5,7 @@
         <div class="main-top-details">{{topDescription}}</div>
         <br />
         <div class="main-top-check-details">
-            <button mat-raised-button color="primary" class="main-top-check-details-fab">
+            <button mat-raised-button color="primary" class="main-top-check-details-fab" (click)="detailsClick.emit()">
                 <mat-icon>expand_more</mat-icon>
                 Check details
             </button>

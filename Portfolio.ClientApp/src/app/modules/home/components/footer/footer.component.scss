@@ -15,4 +15,8 @@
 
 .copyright {
     font-family: Roboto;
+
+    @media (min-width: 1280px) {
+        text-align: end;
+    }
 }
