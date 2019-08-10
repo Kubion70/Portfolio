@@ -2,9 +2,9 @@
     <mat-toolbar-row>
         <span>Jakub Kowalski</span>
         <span class="toolbar-spacer"></span>
-        <button mat-button>My offer</button>
-        <button mat-button>About me</button>
-        <button mat-button>Contact</button>
+        <button mat-button (click)="scroll('offer')">My offer</button>
+        <button mat-button (click)="scroll('about')">About me</button>
+        <button mat-button (click)="scroll('contact')">Contact</button>
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -15,11 +15,11 @@
     [subTitle]="mainPageData.subTitle">
 </app-home-main-top-section>
 
-<app-home-services [services]="mainPageData.offerItems"></app-home-services>
+<app-home-services [services]="mainPageData.offerItems" id="offer"></app-home-services>
 
-<app-about-me-section [description]="mainPageData.aboutMeDescription" [technologies]="mainPageData.knownTechnologies"></app-about-me-section>
+<app-about-me-section [description]="mainPageData.aboutMeDescription" [technologies]="mainPageData.knownTechnologies" id="about"></app-about-me-section>
 
-<app-contact-section [phone]="mainPageData.phone" [email]="mainPageData.email"></app-contact-section>
+<app-contact-section [phone]="mainPageData.phone" [email]="mainPageData.email" id="contact"></app-contact-section>
 
 <app-footer
     [facebook]="mainPageData.facebook"
