@@ -3,13 +3,13 @@ stages:
   - tests
 
 restore:
-  image: microsoft/dotnet:latest
+  image: mcr.microsoft.com/dotnet/core/sdk:3.0
   stage: build
   script:
     - dotnet restore
 
 build:
-  image: microsoft/dotnet:latest
+  image: mcr.microsoft.com/dotnet/core/sdk:3.0
   stage: build
   script:
     - dotnet restore -v q
@@ -25,7 +25,7 @@ frontend-build:
     - ng build --prod
 
 unit-tests:
-  image: microsoft/dotnet:latest
+  image: mcr.microsoft.com/dotnet/core/sdk:3.0
   stage: tests
   script:
     - cd Portfolio.Tests/Portfolio.Tests.Unit
