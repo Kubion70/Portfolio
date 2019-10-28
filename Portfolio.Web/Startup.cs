@@ -11,6 +11,7 @@ using Portfolio.IOC;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace Portfolio.Web
 {
@@ -60,7 +61,7 @@ namespace Portfolio.Web
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Portfolio API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Portfolio API", Version = "v1" });
             });
 
             return Handler.Configure(services);
