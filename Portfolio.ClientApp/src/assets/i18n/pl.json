@@ -1,0 +1,11 @@
+{
+  "$schema": "./schema.json",
+  "HomeMain": {
+    "MyOffer": "Oferta",
+    "AboutMe": "O mnie",
+    "Contact": "Kontakt",
+    "CheckDetailsButton": "Czytaj dalej",
+    "ContactDescription": "Zapraszam do kontaktu przez poniższy formularz lub środkami komunikacji zaprezentowanymi po lewej.",
+    "NameIsRequiredError": "Imię jest wymagane"
+  }
+}

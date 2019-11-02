@@ -2,67 +2,65 @@
     <div class="row">
         <div class="col-md-6 col-xs-12">
             <mat-form-field>
-                <input 
-                    matInput 
-                    placeholder="Your Name" 
-                    type="text" 
+                <input
+                    matInput
+                    placeholder="Your Name"
+                    type="text"
                     formControlName="name"
                     [errorStateMatcher]="matcher">
-                <mat-error *ngIf="contactForm.controls['name'].hasError('required')">
-                    Name is required
-                </mat-error>
+                <mat-error *ngIf="contactForm.controls['name'].hasError('required')">{{ 'HomeMain.NameIsRequiredError' | translate }}</mat-error>
             </mat-form-field>
         </div>
         <div class="col-md-6 col-xs-12">
             <mat-form-field>
-                <input 
-                    matInput 
-                    placeholder="Your Email" 
-                    type="email" 
+                <input
+                    matInput
+                    placeholder="Your Email"
+                    type="email"
                     formControlName="email"
                     [errorStateMatcher]="matcher">
-                <mat-error *ngIf="contactForm.controls['email'].hasError('email') && !contactForm.controls['email'].hasError('required')">
+                <mat-error *ngIf="contactForm.controls['email'].hasError('email') && !contactForm.controls['email'].hasError('required')" i18n="@@emailAddressInvalidError">
                     Email address is invalid
                 </mat-error>
-                <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
+                <mat-error *ngIf="contactForm.controls['email'].hasError('required')" i18n="@@emailAddressRequiredError">
                     Email address is required
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="col-xs-12">
             <mat-form-field>
-                <input 
-                    matInput 
-                    placeholder="Subject" 
-                    type="text" 
+                <input
+                    matInput
+                    placeholder="Subject"
+                    type="text"
                     formControlName="subject"
                     [errorStateMatcher]="matcher">
-                <mat-error *ngIf="contactForm.controls['subject'].hasError('required')">
+                <mat-error *ngIf="contactForm.controls['subject'].hasError('required')" i18n="@@subjectRequiredError">
                     Subject is required
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="col-xs-12">
             <mat-form-field>
-                <textarea 
-                    matInput 
-                    placeholder="Details" 
-                    rows="3" 
+                <textarea
+                    matInput
+                    placeholder="Details"
+                    rows="3"
                     formControlName="details"
                     [errorStateMatcher]="matcher">
                 </textarea>
-                <mat-error *ngIf="contactForm.controls['details'].hasError('required')">
+                <mat-error *ngIf="contactForm.controls['details'].hasError('required')" i18n="@@detailsRequiredError">
                     Details are required
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="col-xs-12">
-            <button 
-                mat-raised-button 
-                color="primary" 
+            <button
+                mat-raised-button
+                color="primary"
                 type="submit"
                 [disabled]="!contactForm.valid || requestProcessing">
-                <mat-icon>send</mat-icon> Send
+                <mat-icon>send</mat-icon>&nbsp;<span i18n="@@contactSendButton">Send</span>
             </button>
         </div>
     </div>

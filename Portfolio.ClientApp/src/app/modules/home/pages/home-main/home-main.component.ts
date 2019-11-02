@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainPageData } from '@core/models';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
+import { SupportedCulture } from '@core/enums/supported-culture.enum';
 
 @Component({
   selector: 'app-home-main',
@@ -14,7 +16,8 @@ export class HomeMainComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {

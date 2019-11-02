@@ -1,0 +1,11 @@
+{
+  "$schema": "./schema.json",
+  "HomeMain": {
+    "MyOffer": "Offer",
+    "AboutMe": "About me",
+    "Contact": "Contact",
+    "CheckDetailsButton": "Check details",
+    "ContactDescription": "Fell free to contact me by form or contact details presented on left side.",
+    "NameIsRequiredError": "Name is required"
+  }
+}
