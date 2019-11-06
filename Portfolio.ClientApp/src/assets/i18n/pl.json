@@ -5,7 +5,22 @@
     "AboutMe": "O mnie",
     "Contact": "Kontakt",
     "CheckDetailsButton": "Czytaj dalej",
-    "ContactDescription": "Zapraszam do kontaktu przez poniższy formularz lub środkami komunikacji zaprezentowanymi po lewej.",
-    "NameIsRequiredError": "Imię jest wymagane"
-  }
+    "TechnologiesByKnowledge": "Znajomość technologii",
+    "WellKnown": "Dobrze znane",
+    "EnoughToWorkWith": "Wystarczająco aby korzystać",
+    "ContactForm": {
+      "Description": "Zapraszam do kontaktu przez poniższy formularz lub środkami komunikacji zaprezentowanymi po lewej.",
+      "Name": "Imię",
+      "Email": "Email",
+      "Subject": "Temat",
+      "Details": "Szczegóły",
+      "NameIsRequiredError": "Imię jest wymagane",
+      "EmailAddressInvalidError": "Adres email jest nieprawidłowy",
+      "EmailAddressRequiredError": "Adres email jest wymagany",
+      "DetailsRequiredError": "Należy podać szczegóły wiadomości",
+      "SubjectRequiredError": "Temat wiadomości jest wymagany",
+      "SendButton": "Wyślij"
+    }
+  },
+  "Copyright": "Copyright 2019 Wszelkie prawa zastrzeżone"
 }

@@ -5,6 +5,10 @@
         <button mat-button (click)="scroll('offer')">{{ 'HomeMain.MyOffer' | translate }}</button>
         <button mat-button (click)="scroll('about')">{{ 'HomeMain.AboutMe' | translate }}</button>
         <button mat-button (click)="scroll('contact')">{{ 'HomeMain.Contact' | translate }}</button>
+        <button mat-button (click)="languageChange()">
+          <span class="flag-icon" [class.flag-icon-pl]="isEnglish" [class.flag-icon-gb]="!isEnglish"></span>
+          <span class="language-text-margin">{{ isEnglish ? 'Polski' : 'English' }}</span>
+        </button>
     </mat-toolbar-row>
 </mat-toolbar>
 

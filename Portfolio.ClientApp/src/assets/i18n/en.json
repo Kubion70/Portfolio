@@ -5,7 +5,22 @@
     "AboutMe": "About me",
     "Contact": "Contact",
     "CheckDetailsButton": "Check details",
-    "ContactDescription": "Fell free to contact me by form or contact details presented on left side.",
-    "NameIsRequiredError": "Name is required"
-  }
+    "TechnologiesByKnowledge": "Technologies by knowledge",
+    "WellKnown": "Well known",
+    "EnoughToWorkWith": "Enough to work with",
+    "ContactForm": {
+      "Description": "Fell free to contact me by form or contact details presented on left side.",
+      "Name": "Your Name",
+      "Email": "Email",
+      "Subject": "Subject",
+      "Details": "Details",
+      "NameIsRequiredError": "Name is required",
+      "EmailAddressInvalidError": "Email address is invalid",
+      "EmailAddressRequiredError": "Email address is required",
+      "DetailsRequiredError": "Details are required",
+      "SubjectRequiredError": "Subject is required",
+      "SendButton": "Send"
+    }
+  },
+  "Copyright": "Copyright 2019 All rights reserved"
 }
