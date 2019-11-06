@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "HomeMain",
+    "Copyright"
+  ],
+  "properties": {
+    "HomeMain": {
+      "type": "object",
+      "required": [
+        "MyOffer",
+        "AboutMe",
+        "Contact",
+        "CheckDetailsButton",
+        "TechnologiesByKnowledge",
+        "WellKnown",
+        "EnoughToWorkWith",
+        "ContactForm"
+      ],
+      "properties": {
+        "MyOffer": {
+          "type": "string"
+        },
+        "AboutMe": {
+          "type": "string"
+        },
+        "Contact": {
+          "type": "string"
+        },
+        "CheckDetailsButton": {
+          "type": "string"
+        },
+        "TechnologiesByKnowledge": {
+          "type": "string"
+        },
+        "WellKnown": {
+          "type": "string"
+        },
+        "EnoughToWorkWith": {
+          "type": "string"
+        },
+        "ContactForm": {
+          "type": "object",
+          "required": [
+            "Description",
+            "Name",
+            "Email",
+            "Subject",
+            "Details",
+            "NameIsRequiredError",
+            "EmailAddressInvalidError",
+            "EmailAddressRequiredError",
+            "DetailsRequiredError",
+            "SubjectRequiredError",
+            "SendButton"
+          ],
+          "properties": {
+            "Description": {
+              "type": "string"
+            },
+            "Name": {
+              "type": "string"
+            },
+            "Email": {
+              "type": "string"
+            },
+            "Subject": {
+              "type": "string"
+            },
+            "Details": {
+              "type": "string"
+            },
+            "NameIsRequiredError": {
+              "type": "string"
+            },
+            "EmailAddressInvalidError": {
+              "type": "string"
+            },
+            "EmailAddressRequiredError": {
+              "type": "string"
+            },
+            "SubjectRequiredError": {
+              "type": "string"
+            },
+            "DetailsRequiredError": {
+              "type": "string"
+            },
+            "SendButton": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Copyright": {
+      "type": "string"
+    }
+  }
+}

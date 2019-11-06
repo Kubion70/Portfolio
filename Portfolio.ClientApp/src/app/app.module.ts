@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from '@core/core.module';
+import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
+import { TranslationService } from '@core/services/translation.service';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,16 @@ import { CoreModule } from '@core/core.module';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslationService,
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [],
+  providers: [TranslatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorSnackBarComponent, SuccessSnackBarComponent } from './components';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ErrorSnackBarComponent, SuccessSnackBarComponent],
@@ -31,7 +32,8 @@ import { ErrorSnackBarComponent, SuccessSnackBarComponent } from './components';
     MatSnackBarModule,
     ReactiveFormsModule,
     ErrorSnackBarComponent,
-    SuccessSnackBarComponent
+    SuccessSnackBarComponent,
+    TranslateModule
   ],
   providers: [
     MatSnackBar

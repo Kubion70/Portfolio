@@ -2,14 +2,18 @@
     <mat-toolbar-row>
         <span>Jakub Kowalski</span>
         <span class="toolbar-spacer"></span>
-        <button mat-button (click)="scroll('offer')">My offer</button>
-        <button mat-button (click)="scroll('about')">About me</button>
-        <button mat-button (click)="scroll('contact')">Contact</button>
+        <button mat-button (click)="scroll('offer')">{{ 'HomeMain.MyOffer' | translate }}</button>
+        <button mat-button (click)="scroll('about')">{{ 'HomeMain.AboutMe' | translate }}</button>
+        <button mat-button (click)="scroll('contact')">{{ 'HomeMain.Contact' | translate }}</button>
+        <button mat-button (click)="languageChange()">
+          <span class="flag-icon" [class.flag-icon-pl]="isEnglish" [class.flag-icon-gb]="!isEnglish"></span>
+          <span class="language-text-margin">{{ isEnglish ? 'Polski' : 'English' }}</span>
+        </button>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<app-home-main-top-section 
-    [topImageUrl]="mainPageData.topImageUrl" 
+<app-home-main-top-section
+    [topImageUrl]="mainPageData.topImageUrl"
     [topDescription]="mainPageData.topDescription"
     [title]="mainPageData.title"
     [subTitle]="mainPageData.subTitle"
